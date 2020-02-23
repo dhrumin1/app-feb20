@@ -1,0 +1,14 @@
+{
+  "version": 3,
+  "file": "bundle.css",
+  "sources": [
+    "..\\..\\StartButton.svelte",
+    "..\\..\\UnitButton.svelte"
+  ],
+  "sourcesContent": [
+    "<!-- https://svelte.dev/examples#dom-event-forwarding -->\r\n<style>\r\n\tbutton {\r\n\t\tfont-family: 'Comic Sans MS', cursive;\r\n\t\tfont-size: 2em;\r\n\t\tpadding: 0.5em 1em;\r\n\t\tcolor: royalblue;\r\n\t\tbackground: gold;\r\n\t\tborder-radius: 1em;\r\n\t\tbox-shadow: 2px 2px 4px rgba(0,0,0,0.5);\r\n\t}\r\n</style>\r\n<script>\r\n\timport { StartPauseStop } from './../configs/Store';\r\n\tfunction start(){\r\n\t\tStartPauseStop.update(old => \"start\");\r\n    }\r\n\tfunction stop(){\r\n\t\tStartPauseStop.update(old => \"stop\");\r\n    }\r\n\tfunction pause(){\r\n\t\tStartPauseStop.update(old => \"pause\");\r\n\t}\r\n\tfunction resume(){\r\n\t\tStartPauseStop.update(old => \"resume\");\r\n\t}\r\n\tlet status;\r\n\tconst unsubscribe = StartPauseStop.subscribe(value => {\r\n\t\tstatus = value;\r\n\t});\r\n</script>\r\n{#if status=='stop' }\r\n\t<button on:click={start}>\r\n\t\tStart\r\n\t</button>\r\n{/if}\r\n{#if status=='start' || status =='resume'}\r\n\t<button on:click={pause}>\r\n\t\tPause\r\n\t</button>\r\n\t<button on:click={stop}>\r\n\t\tStop\r\n\t</button>\r\n{/if}\r\n{#if status=='pause' }\r\n\t<button on:click={resume}>\r\n\t\tresume\r\n\t</button>\r\n\t<button on:click={stop}>\r\n\t\tStop\r\n\t</button>\r\n{/if}",
+    "<script>\r\n    export let value;\r\n    export let selected;  \r\n</script>   \r\n<style>\r\n\tbutton {\r\n\t\tfont-family: 'Comic Sans MS', cursive;\r\n\t\tfont-size: 1em;\r\n\t\tpadding: 0.5em 1em;\r\n\t\tcolor: royalblue;\r\n\t\tbackground: gold;\r\n\t\tborder-radius: 1em;\r\n\t\tbox-shadow: 2px 2px 4px rgba(0,0,0,0.5);\r\n        \r\n\t}\r\n    button.active{\r\n        background: red;\r\n        color: white;\r\n    }\r\n</style>\r\n\r\n<button class={value==selected?'active':''} on:click|preventDefault  >\r\n\t{value}\r\n</button>"
+  ],
+  "names": [],
+  "mappings": "AAEC,MAAM,eAAC,CAAC,AACP,WAAW,CAAE,eAAe,CAAC,CAAC,OAAO,CACrC,SAAS,CAAE,GAAG,CACd,OAAO,CAAE,KAAK,CAAC,GAAG,CAClB,KAAK,CAAE,SAAS,CAChB,UAAU,CAAE,IAAI,CAChB,aAAa,CAAE,GAAG,CAClB,UAAU,CAAE,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,KAAK,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,GAAG,CAAC,AACxC,CAAC;ACLD,MAAM,cAAC,CAAC,AACP,WAAW,CAAE,eAAe,CAAC,CAAC,OAAO,CACrC,SAAS,CAAE,GAAG,CACd,OAAO,CAAE,KAAK,CAAC,GAAG,CAClB,KAAK,CAAE,SAAS,CAChB,UAAU,CAAE,IAAI,CAChB,aAAa,CAAE,GAAG,CAClB,UAAU,CAAE,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,KAAK,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,GAAG,CAAC,AAExC,CAAC,AACE,MAAM,qBAAO,CAAC,AACV,UAAU,CAAE,GAAG,CACf,KAAK,CAAE,KAAK,AAChB,CAAC"
+}
