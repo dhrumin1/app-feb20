@@ -1,4 +1,4 @@
-FROM custom
+FROM ubuntu
                     
 USER gitpod
 
